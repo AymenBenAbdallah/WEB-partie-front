@@ -26,7 +26,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 **installer npm sur cette page : https://nodejs.org/fr/**
 ça vous installe nodejs et npm en même temps le feu wow ! 
 
-**npm install -g vue-cli **
+**npm install -g vue-cli**
 ça vous install vue donc maintenant vous pouvez utiliser la commande vue !
 
 Et voilà vous pouvez build pour voir ce que ça fait !
