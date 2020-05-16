@@ -10,10 +10,13 @@
 					</a>
 				</li>
 			</ul>
+			<search-bar style="margin-right: 10rem" />
 			<b-button v-b-modal.my-modal v-if="!logged">Se connecter</b-button>
 			<a class="btn btn-primary" v-else>{{LoggedUser.nom}} {{LoggedUser.prenom}}</a>
 		</div>
 	</div>
+	
+
 	<b-modal id="my-modal" hide-footer title="Login">
 		<LoginForm />
 	</b-modal>
@@ -22,28 +25,30 @@
 
 
 <script>
-import LoginForm from '../components/LoginForm.vue'
+import LoginForm from './LoginForm.vue'
+import SearchBar from './SearchBar.vue'
 
 export default {
 	components: {
-		LoginForm
+		LoginForm,
+		SearchBar,
 	},
-	data: function() {
-		
+	data() {
 		return {
-
 			links: [
 				{
 					id: 0,
-			text: 'Acheter un dildo',
-			page:'/achat'
-		},
-		{
-			id: 1,
-			text: 'Vendre un didlo',
-			page:'/vente'
-		}
-		]
+					text: 'Acheter un dildo',
+					page:'/achat'
+				},
+				{
+					id: 1,
+					text: 'Vendre un didlo',
+					page:'/vente'
+				}
+				],
+			logged: false,
+			LoggedUser: ""
 		}
 	}
 }

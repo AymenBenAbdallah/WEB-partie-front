@@ -2,9 +2,9 @@
     <div class="d-flex justify-content-center">
         <form @submit.prevent="submit()">
             <label for="email">Email : </label> <br/>
-            <input class="form-control" type="email" v-model="email" /> <br/>
+            <b-form-input class="form-control" type="email" v-model="email" required/> <br/>
             <label for="password">Mot de passe : </label> <br/>
-            <input class="form-control" type="password" v-model="password" /><br />
+            <b-form-input class="form-control" type="password" v-model="password" required/><br />
             <button class="btn btn-success float-right" type="submit">Log in</button>
         </form>
     </div>  
