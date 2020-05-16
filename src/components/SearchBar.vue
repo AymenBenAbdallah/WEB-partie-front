@@ -15,19 +15,9 @@
 
         methods: {
             search: function() {
-
-                this.$http.post('http://localhost/api/search', {
-                        word: this.searchWord
-                    })
-                    .then(function (response) {
-                        if (response.data.results) {
-                        this.$router.push({ path:'/search', param: {results: response.data.results}})
-                        }
-                    })
-                    .catch(function (err) {
-                        console.log('err', err)
-                    })
-                }
+                this.$router.push({path:'/search',query:{searchWord: this.searchWord}});
         }
     }
+    
+}
 </script>

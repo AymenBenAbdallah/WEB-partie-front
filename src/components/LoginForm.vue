@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center vertical-center">
         <form @submit.prevent="submit()">
             <label for="email">Email : </label> <br/>
             <b-form-input class="form-control" type="email" v-model="email" required/> <br/>
@@ -27,12 +27,13 @@ export default {
             email: this.email
           })
           .then(function (response) {
-            if (response.status === 200 && 'token' in response.data) {
+            if ('token' in response.data) {
               this.$session.start()
               this.$session.set('jwt', response.body.token)
               Vue.http.headers.common['Authorization'] = 'Bearer ' + response.body.token
             }
-        }, function (err) {
+        })
+        .catch(function (err) {
             console.log('err', err)
           })
     }

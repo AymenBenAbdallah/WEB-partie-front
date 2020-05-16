@@ -1,18 +1,19 @@
 <template>
 <div>
 	<div id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-		<h2 class="navbar-brand">Dildozone</h2>
+		<router-link class="navbar-brand" to="/">Dildozone</router-link>
 		<div class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item" :key="todo.id" v-for="todo in links" >
-					<a class="nav-link">
-						{{ todo.text }}
-					</a>
+				<li class="nav-item" :key="page.id" v-for="page in links" >
+					<router-link class="nav-link" :to="page.link" >
+						{{page.text}}
+					</router-link>
 				</li>
 			</ul>
 			<search-bar style="margin-right: 10rem" />
-			<b-button v-b-modal.my-modal v-if="!logged">Se connecter</b-button>
-			<a class="btn btn-primary" v-else>{{LoggedUser.nom}} {{LoggedUser.prenom}}</a>
+			<router-link class="btn btn-outline-success" to="/ajoutUtilisateur">S'inscrire</router-link>
+			<b-button class="btn btn-success" v-b-modal.my-modal v-if="!logged">Se connecter</b-button>
+			<router-link class="btn btn-primary" v-else to="/panier">Mon panier</router-link>
 		</div>
 	</div>
 	
@@ -38,13 +39,13 @@ export default {
 			links: [
 				{
 					id: 0,
-					text: 'Acheter un dildo',
-					page:'/achat'
+					text: 'Mon panier',
+					link:'/panier'
 				},
 				{
 					id: 1,
 					text: 'Vendre un didlo',
-					page:'/vente'
+					link:'/vente'
 				}
 				],
 			logged: false,
