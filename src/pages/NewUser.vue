@@ -40,20 +40,23 @@ export default {
           
       }
   },
-  methods: {
-      addUser: function() {
-          this.$http.post('http://localhost/api/createuser', {
-              user: this.user,
-              adresse: this.adresse
-
-          })
-          .then(function () {
-            console.log("Succès d'ajout à la bdd")
-        })
-        .catch(function (err) {
-            console.log('err', err)
-          })
-      }
+    methods: {
+        addUser: function() {
+            let config = { headers: {
+                "Content-type": "application/json",
+                'Access-Control-Allow-Origin': "*",
+                'Accept': '*/*'
+                }}
+            this.$http
+                .post('http://localhost:8080/site-vente/rest/addUser', this.user, config)
+                .then(function () {
+                    console.log("Succès d'ajout à la bdd")
+                })
+                .catch(function (err) {
+                    console.log(Response)
+                    console.log('err', err)
+                })
+            }
 
   }
 }
