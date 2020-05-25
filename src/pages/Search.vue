@@ -42,15 +42,15 @@ export default {
                     })
                     .then(function (response) {
                         if (response.data.results) {
-                        this.items = response.data.results
+                        self.items = response.data.results
                         }
                     })
                     .catch(function (err) {
                         console.log('err', err)
                         self.items =  [
-                                        { nom: "dildo1", prix: 10,  id: 0 },
-                                        { nom: "dildo2", prix: 20,  id: 1 },         
-                                        { nom: "dildo3", prix: 30,  id: 2 },
+                                        { nom: "produit1", prix: 10,  id: 0 },
+                                        { nom: "produit2", prix: 20,  id: 1 },         
+                                        { nom: "produit3", prix: 30,  id: 2 },
                                                                     
                                         ]
                     })

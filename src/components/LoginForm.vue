@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 export default {
   data() {
     return {
@@ -22,17 +21,20 @@ export default {
 
   methods: {
     submit: function() {
-      this.$http.post('http://localhost/api/login', {
+      let self = this
+      this.$http.post('http://localhost:8080/site-vente/rest/login', {
             password: this.password,
             email: this.email
           })
           .then(function (response) {
-            if ('token' in response.data) {
-              this.$session.start()
-              this.$session.set('jwt', response.body.token)
-              Vue.http.headers.common['Authorization'] = 'Bearer ' + response.body.token
-            }
-        })
+              self.$session.start()
+              self.$session.set('user', response.data[0])
+              console.log(self.$session)
+              self.$forceUpdate();
+              if (self.$route.path != '/') {
+                self.$router.push({path:'/'})
+              }
+          })
         .catch(function (err) {
             console.log('err', err)
           })

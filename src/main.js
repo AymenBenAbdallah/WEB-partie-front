@@ -17,6 +17,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
 const router = new VueRouter({
+  base: '/site-vente/',
   mode: 'history',
 
   routes: [
@@ -33,11 +34,7 @@ const router = new VueRouter({
       component: require('./pages/Index').default
     },
     {
-      path: '*',
-      component: require('./pages/404').default
-    },
-    {
-      path:'/search', 
+      path: '/search', 
       component: require('./pages/Search').default
     },
     {
@@ -47,7 +44,14 @@ const router = new VueRouter({
     {
       path: '/produit/:id',
       component: require('./pages/Produit').default
-    }
+    },
+    {
+      path : '/rest/*'
+    },
+    {
+      path: '/*',
+      component: require('./pages/404').default
+    },
   ]
 })
 

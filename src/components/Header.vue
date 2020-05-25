@@ -1,7 +1,7 @@
 <template>
 <div>
 	<div id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-		<router-link class="navbar-brand" to="/">Dildozone</router-link>
+		<router-link class="navbar-brand" to="/">Enozama</router-link>
 		<div class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item" :key="page.id" v-for="page in links" >
@@ -44,12 +44,11 @@ export default {
 				},
 				{
 					id: 1,
-					text: 'Vendre un didlo',
+					text: 'Vendre',
 					link:'/vente'
 				}
 				],
-			logged: false,
-			LoggedUser: ""
+			logged: this.$session.get('user') == null ? false : true ,
 		}
 	}
 }

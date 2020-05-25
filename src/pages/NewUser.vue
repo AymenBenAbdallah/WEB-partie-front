@@ -48,9 +48,23 @@ export default {
                 'Accept': '*/*'
                 }}
             this.$http
-                .post('http://localhost:8080/site-vente/rest/addUser', this.user, config)
+                .post('http://localhost:8080/site-vente/rest/user/add', this.user, config)
                 .then(function () {
-                    console.log("Succès d'ajout à la bdd")
+                    this.$http.post('http://localhost:8080/site-vente/rest/login', {
+                        password: this.password,
+                        email: this.email
+                    })
+                    .then(function (response) {
+                        self.$session.start()
+                        self.$session.set('user', response.data[0])
+                        console.log(self.$session)
+                        self.$forceUpdate();
+                        self.$router.push({path:'/'})
+
+                    })
+                    .catch(function (err) {
+                        console.log('err', err)
+                    })
                 })
                 .catch(function (err) {
                     console.log(Response)
