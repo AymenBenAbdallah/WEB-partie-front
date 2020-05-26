@@ -30,7 +30,7 @@ export default {
               self.$session.start()
               self.$session.set('user', response.data[0])
               console.log(self.$session)
-              self.$forceUpdate();
+              window.location.reload()
               if (self.$route.path != '/') {
                 self.$router.push({path:'/'})
               }

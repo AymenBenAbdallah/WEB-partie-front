@@ -11,9 +11,16 @@
 				</li>
 			</ul>
 			<search-bar style="margin-right: 10rem" />
-			<router-link class="btn btn-outline-success" to="/ajoutUtilisateur">S'inscrire</router-link>
-			<b-button class="btn btn-success" v-b-modal.my-modal v-if="!logged">Se connecter</b-button>
-			<router-link class="btn btn-primary" v-else to="/panier">Mon panier</router-link>
+
+
+			<div v-if="this.$session.get('user') != null ? false : true">
+				<router-link class="btn btn-outline-success" to="/ajoutUtilisateur">S'inscrire</router-link>
+				<b-button class="btn btn-success" v-b-modal.my-modal >Se connecter</b-button>
+			</div>
+			<div v-else>
+				<router-link class="btn btn-primary"  to="/panier">Mon panier</router-link>
+				<b-button class="btn btn-danger" @click='logout()'>Se déconnecter</b-button>
+			</div>
 		</div>
 	</div>
 	
@@ -49,6 +56,13 @@ export default {
 				}
 				],
 			logged: this.$session.get('user') == null ? false : true ,
+			
+		}
+	},
+	methods : {
+		logout: function() {
+			console.log(this.$session)
+			this.$session.destroy()
 		}
 	}
 }
