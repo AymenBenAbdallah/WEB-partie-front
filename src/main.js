@@ -18,7 +18,6 @@ Vue.prototype.$http = axios
 
 const router = new VueRouter({
   base: '/site-vente/',
-  mode: 'history',
 
   routes: [
     {
